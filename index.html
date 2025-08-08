@@ -1,15 +1,387 @@
-<html>
-    
-        <head>
-            <title>Shamila Wijekoon</title>
-        </head>
-   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Creator - Aspect Ratio Preserving</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Open+Sans:wght@400;500;600&family=Lato:wght@400;700&family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600&family=Source+Sans+Pro:wght@400;600&family=Raleway:wght@400;500;600&family=Ubuntu:wght@400;500;700&family=Nunito:wght@400;600&family=Playfair+Display:wght@400;700&family=Oswald:wght@400;600&family=Dancing+Script:wght@400;700&family=Lobster&family=Pacifico&family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__brand">
+            <h1>Wallpaper Creator</h1>
+            <div class="header__subtitle">Aspect Ratio Preserving Auto-Fit</div>
+        </div>
+        <div class="header__actions">
+            <button class="btn btn--secondary btn--sm" id="themeToggle">🌓 Theme</button>
+            <button class="btn btn--primary btn--sm" id="exportBtn">Export</button>
+            <button class="btn btn--outline btn--sm" id="saveProjectBtn">Save Project</button>
+            <button class="btn btn--outline btn--sm" id="loadProjectBtn">My Projects</button>
+        </div>
+    </header>
 
-    <body>
-        <h1>
-            I'm Shamila!
-            :)
-        </h1>
-        
-    </body>
+    <!-- Main Layout -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__section">
+                <div class="section-header">
+                    <h3>Images</h3>
+                    <div class="selection-controls">
+                        <button class="btn btn--sm btn--outline" id="selectAllBtn">Select All</button>
+                        <button class="btn btn--sm btn--outline" id="selectNoneBtn">Select None</button>
+                    </div>
+                </div>
+                <div class="image-upload">
+                    <button class="btn btn--primary btn--full-width" id="addImagesBtn">
+                        📁 Add Images
+                    </button>
+                    <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+                    <div class="upload-drop-zone" id="uploadDropZone">
+                        <p>Drag & drop images here</p>
+                    </div>
+                </div>
+                <div class="selected-count" id="selectedCount">No images selected</div>
+                <div class="aspect-ratio-info" id="aspectRatioInfo">
+                    <div class="ratio-preservation-status">
+                        <span class="status status--success">✓ Aspect Ratios Protected</span>
+                    </div>
+                </div>
+                <div class="image-gallery" id="imageGallery"></div>
+                
+                <div class="bulk-actions" id="bulkActions" style="display: none;">
+                    <h4>Bulk Actions</h4>
+                    <div class="bulk-buttons">
+                        <button class="btn btn--sm btn--outline" id="bulkDeleteBtn">🗑 Delete Selected</button>
+                        <button class="btn btn--sm btn--outline" id="bulkAddToCanvasBtn">➕ Add to Canvas</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar__section">
+                <h3>Natural Auto-Fit Layouts</h3>
+                <div class="ratio-promise">
+                    <div class="promise-badge">
+                        <span class="promise-icon">🛡️</span>
+                        <span class="promise-text">Original proportions guaranteed</span>
+                    </div>
+                </div>
+                <button class="btn btn--primary btn--full-width auto-fit-main-btn" id="autoFitBtn">
+                    ✨ Auto-Fit with Natural Stacking
+                </button>
+                <div class="natural-layout-options">
+                    <button class="btn btn--sm btn--outline natural-layout-btn" data-layout="natural-flow">≋ Natural Flow</button>
+                    <button class="btn btn--sm btn--outline natural-layout-btn" data-layout="masonry">⌐ Masonry Stack</button>
+                    <button class="btn btn--sm btn--outline natural-layout-btn" data-layout="proportional-grid">▦ Proportional Grid</button>
+                    <button class="btn btn--sm btn--outline natural-layout-btn" data-layout="aspect-grouped">⊞ Aspect Grouped</button>
+                    <button class="btn btn--sm btn--outline natural-layout-btn" data-layout="organic">◈ Organic Stack</button>
+                </div>
+            </div>
+
+            <div class="sidebar__section">
+                <h3>Ratio Preservation Settings</h3>
+                <div class="setting-group">
+                    <label class="form-label">
+                        <input type="checkbox" id="enforceRatiosCheck" checked disabled> 
+                        Preserve Aspect Ratios (Always On)
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <label class="form-label">
+                        <input type="checkbox" id="allowStackingCheck" checked> 
+                        Allow Natural Stacking
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <label class="form-label">Minimum Image Size:</label>
+                    <input type="range" id="minSizeSlider" min="50" max="200" value="100" class="form-control">
+                    <span id="minSizeValue">100px</span>
+                </div>
+                <div class="setting-group">
+                    <label class="form-label">Stack Direction:</label>
+                    <select class="form-control" id="stackDirectionSelect">
+                        <option value="auto">Auto (Optimal)</option>
+                        <option value="vertical">Vertical Priority</option>
+                        <option value="horizontal">Horizontal Priority</option>
+                        <option value="mixed">Mixed Stacking</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sidebar__section">
+                <h3>Tools</h3>
+                <div class="tool-buttons">
+                    <button class="btn btn--outline tool-btn" id="addTextBtn">📝 Add Text</button>
+                    <button class="btn btn--outline tool-btn" id="backgroundBtn">🎨 Background</button>
+                    <button class="btn btn--outline tool-btn" id="templateBtn">📐 Templates</button>
+                    <button class="btn btn--outline tool-btn" id="undoBtn">↶ Undo</button>
+                    <button class="btn btn--outline tool-btn" id="redoBtn">↷ Redo</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Canvas Area -->
+        <main class="canvas-area">
+            <div class="canvas-toolbar">
+                <div class="canvas-size-selector">
+                    <select class="form-control" id="canvasSizeSelect">
+                        <option value="custom">Custom Size</option>
+                    </select>
+                </div>
+                <div class="layout-controls">
+                    <button class="btn btn--primary" id="layoutPanelToggle">⚙ Advanced Layout Options</button>
+                </div>
+                <div class="zoom-controls">
+                    <button class="btn btn--sm btn--outline" id="zoomOutBtn">−</button>
+                    <span id="zoomLevel">100%</span>
+                    <button class="btn btn--sm btn--outline" id="zoomInBtn">+</button>
+                    <button class="btn btn--sm btn--outline" id="fitToScreenBtn">Fit</button>
+                </div>
+            </div>
+            
+            <!-- Advanced Auto-fit Options Panel -->
+            <div class="advanced-auto-fit-panel hidden" id="advancedAutoFitPanel">
+                <div class="auto-fit-header">
+                    <h3>Advanced Natural Layout Options</h3>
+                    <button class="btn btn--sm btn--outline" id="closeAdvancedPanel">✕</button>
+                </div>
+                <div class="auto-fit-content">
+                    <div class="layout-algorithm-grid">
+                        <div class="layout-algorithm" data-layout="natural-flow">
+                            <div class="layout-icon">≋</div>
+                            <div class="layout-info">
+                                <div class="layout-name">Natural Flow</div>
+                                <div class="layout-desc">Images flow naturally in rows, maintaining original proportions</div>
+                                <div class="layout-features">✓ Preserves Ratios ✓ Natural Stacking</div>
+                            </div>
+                        </div>
+                        <div class="layout-algorithm" data-layout="masonry">
+                            <div class="layout-icon">⌐</div>
+                            <div class="layout-info">
+                                <div class="layout-name">Masonry Stack</div>
+                                <div class="layout-desc">Pinterest-style columns with natural heights</div>
+                                <div class="layout-features">✓ Preserves Ratios ✓ Column Balance</div>
+                            </div>
+                        </div>
+                        <div class="layout-algorithm" data-layout="proportional-grid">
+                            <div class="layout-icon">▦</div>
+                            <div class="layout-info">
+                                <div class="layout-name">Proportional Grid</div>
+                                <div class="layout-desc">Grid that adapts to image proportions</div>
+                                <div class="layout-features">✓ Preserves Ratios ✓ Adaptive Grid</div>
+                            </div>
+                        </div>
+                        <div class="layout-algorithm" data-layout="aspect-grouped">
+                            <div class="layout-icon">⊞</div>
+                            <div class="layout-info">
+                                <div class="layout-name">Aspect Grouped</div>
+                                <div class="layout-desc">Group similar aspect ratios together</div>
+                                <div class="layout-features">✓ Preserves Ratios ✓ Smart Grouping</div>
+                            </div>
+                        </div>
+                        <div class="layout-algorithm" data-layout="organic">
+                            <div class="layout-icon">◈</div>
+                            <div class="layout-info">
+                                <div class="layout-name">Organic Stack</div>
+                                <div class="layout-desc">Natural photo-like stacking with slight overlaps</div>
+                                <div class="layout-features">✓ Preserves Ratios ✓ Organic Overlap</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-settings">
+                        <div class="setting-group">
+                            <label class="form-label">Spacing:</label>
+                            <input type="range" id="spacingSlider" min="0" max="50" value="10" class="form-control">
+                            <span id="spacingValue">10px</span>
+                        </div>
+                        <div class="setting-group">
+                            <label class="form-label">Margin:</label>
+                            <input type="range" id="marginSlider" min="0" max="100" value="20" class="form-control">
+                            <span id="marginValue">20px</span>
+                        </div>
+                        <div class="setting-group">
+                            <label class="form-label">Max Scale Down:</label>
+                            <input type="range" id="maxScaleSlider" min="0.1" max="1" step="0.1" value="0.3" class="form-control">
+                            <span id="maxScaleValue">30%</span>
+                        </div>
+                        <div class="setting-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="balanceCompositionCheck" checked> 
+                                Balance Visual Composition
+                            </label>
+                        </div>
+                        <div class="setting-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="prioritizeLargeImagesCheck"> 
+                                Prioritize Large Images
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="auto-fit-actions">
+                        <button class="btn btn--outline" id="previewLayoutBtn">👁 Preview Layout</button>
+                        <button class="btn btn--primary" id="applyAdvancedLayoutBtn">✅ Apply Natural Layout</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="canvas-container" id="canvasContainer">
+                <canvas id="mainCanvas"></canvas>
+                <div class="canvas-overlay" id="canvasOverlay"></div>
+            </div>
+        </main>
+
+        <!-- Properties Panel -->
+        <aside class="properties-panel" id="propertiesPanel">
+            <h3>Properties</h3>
+            <div class="properties-content" id="propertiesContent">
+                <p class="text-secondary">Select an element to edit properties</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Calculating natural layout preserving aspect ratios...</div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Export Modal -->
+    <div class="modal hidden" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Export Wallpaper</h3>
+                <button class="btn btn--sm btn--outline" id="closeExportModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Export Size:</label>
+                    <select class="form-control" id="exportSizeSelect">
+                        <option value="current">Current Canvas Size</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Format:</label>
+                    <select class="form-control" id="exportFormat">
+                        <option value="png">PNG</option>
+                        <option value="jpg">JPG</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Quality (JPG only):</label>
+                    <input type="range" class="form-control" id="exportQuality" min="50" max="100" value="90">
+                    <span id="qualityValue">90%</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="cancelExport">Cancel</button>
+                <button class="btn btn--primary" id="downloadExport">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Modal -->
+    <div class="modal hidden" id="projectsModal">
+        <div class="modal-content modal-content--large">
+            <div class="modal-header">
+                <h3>My Projects</h3>
+                <button class="btn btn--sm btn--outline" id="closeProjectsModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="projects-grid" id="projectsGrid">
+                    <p class="text-secondary">No saved projects yet</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="closeProjectsFooter">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Project Modal -->
+    <div class="modal hidden" id="saveProjectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Save Project</h3>
+                <button class="btn btn--sm btn--outline" id="closeSaveModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Project Name:</label>
+                    <input type="text" class="form-control" id="projectNameInput" placeholder="My Wallpaper">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="cancelSave">Cancel</button>
+                <button class="btn btn--primary" id="confirmSave">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Modal -->
+    <div class="modal hidden" id="backgroundModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Background Settings</h3>
+                <button class="btn btn--sm btn--outline" id="closeBackgroundModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Background Type:</label>
+                    <select class="form-control" id="backgroundType">
+                        <option value="solid">Solid Color</option>
+                        <option value="gradient">Gradient</option>
+                        <option value="transparent">Transparent</option>
+                    </select>
+                </div>
+                <div class="form-group" id="solidColorGroup">
+                    <label class="form-label">Color:</label>
+                    <input type="color" class="form-control" id="backgroundColor" value="#ffffff">
+                </div>
+                <div class="form-group hidden" id="gradientGroup">
+                    <label class="form-label">Gradient Colors:</label>
+                    <div class="gradient-controls">
+                        <input type="color" class="form-control" id="gradientColor1" value="#ffffff">
+                        <input type="color" class="form-control" id="gradientColor2" value="#000000">
+                        <select class="form-control" id="gradientDirection">
+                            <option value="to right">Horizontal</option>
+                            <option value="to bottom">Vertical</option>
+                            <option value="to bottom right">Diagonal</option>
+                            <option value="radial">Radial</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="cancelBackground">Cancel</button>
+                <button class="btn btn--primary" id="applyBackground">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates Modal -->
+    <div class="modal hidden" id="templatesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Layout Templates</h3>
+                <button class="btn btn--sm btn--outline" id="closeTemplatesModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="templates-grid" id="templatesGrid"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="cancelTemplate">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
 </html>
