@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSN Engineering - Innovation is Our Way of Life</title>
+    <!-- Importing Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Styles for Logo and Inter Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom logo styling to match the brochure */
+        .logo-text-main {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #111827; /* gray-900 */
+        }
+        .logo-text-sub {
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fbbf24; /* amber-400 */
+            text-transform: uppercase;
+        }
+
+        /* Simple scroll-behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="#home" class="flex flex-col items-start leading-none">
+                <span class="logo-text-main">KSN</span>
+                <span class="logo-text-sub">Engineering</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="font-semibold text-gray-600 hover:text-amber-500 transition-colors">Home</a>
+                <a href="#about" class="font-semibold text-gray-600 hover:text-amber-500 transition-colors">About</a>
+                <a href="#services" class="font-semibold text-gray-600 hover:text-amber-500 transition-colors">Services</a>
+                <a href="#products" class="font-semibold text-gray-600 hover:text-amber-500 transition-colors">Products</a>
+                <a href="#contact" class="font-semibold text-gray-600 hover:text-amber-500 transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-amber-500 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <a href="#home" class="block px-4 py-3 text-base font-semibold text-gray-600 hover:bg-gray-50 hover:text-amber-500">Home</a>
+            <a href="#about" class="block px-4 py-3 text-base font-semibold text-gray-600 hover:bg-gray-50 hover:text-amber-500">About</a>
+            <a href="#services" class="block px-4 py-3 text-base font-semibold text-gray-600 hover:bg-gray-50 hover:text-amber-500">Services</a>
+            <a href="#products" class="block px-4 py-3 text-base font-semibold text-gray-600 hover:bg-gray-50 hover:text-amber-500">Products</a>
+            <a href="#contact" class="block px-4 py-3 text-base font-semibold text-gray-600 hover:bg-gray-50 hover:text-amber-500">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Hero Text -->
+                <div>
+                    <span class="block text-lg font-semibold text-amber-500 uppercase tracking-wide">KSN Engineering</span>
+                    <h1 class="mt-2 text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                        Innovation is Our Way of Life
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600">
+                        Providing high-quality, reliable solutions in Mechanical, Electrical, and Electronic Engineering. We turn your technical problems into practical, high-workmanship solutions.
+                    </p>
+                    <div class="mt-10">
+                        <a href="#contact" class="inline-block bg-amber-500 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-600 transition-shadow shadow-lg hover:shadow-xl">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Image Placeholder -->
+                <div class="hidden md:block">
+                    <img src="./img1.png" alt="Engineering circuit board" class="rounded-lg shadow-2xl object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    About KSN Engineering
+                </h2>
+                <p class="mt-4 text-xl text-amber-600 font-semibold">
+                    Our Aim is to Provide the Best Service
+                </p>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
+                    KSN Engineering (Private) Limited is involved in providing expert engineering services across Mechanical, Electrical, & Electronics disciplines. We have a dedicated team of qualified and experienced engineers to carry out design, and skilled technical staff for fabrication and manufacturing. We ensure complete customer satisfaction by providing robust solutions to their technical problems and guarantee a high level of quality and workmanship in all project execution.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="bg-gray-100 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        Our Core Engineering Services
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We offer a complete range of services to meet your industrial needs.
+                    </p>
+                </div>
+                
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Mechanical Engineering Card -->
+                    <div class="bg-white rounded-lg shadow-xl p-8 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-500 text-white mb-6">
+                            <!-- Icon: Wrench/Cog -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118L2.04 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Mechanical Engineering</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Design of Customized Machinery</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Fabrication of Machinery & Conveyors</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Steel & Stainless Steel Fabrication</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Factory Automation Projects</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Pneumatic & Hydraulic Control Systems</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Machinery Spare Parts Design & Supply</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Air Conditioning Installation & Services</li>
+                        </ul>
+                    </div>
+
+                    <!-- Electrical Engineering Card -->
+                    <div class="bg-white rounded-lg shadow-xl p-8 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-500 text-white mb-6">
+                            <!-- Icon: Lightning Bolt -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Electrical Engineering</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Industrial Electrical Distribution Boards</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Building & Factory Electrical Installation</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Installation of Capacitor Banks</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Motor Control Panels</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Lightning Protection Systems</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Conducting Energy Audits</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Data & Voice Cabling</li>
+                        </ul>
+                    </div>
+
+                    <!-- Electronic Engineering Card -->
+                    <div class="bg-white rounded-lg shadow-xl p-8 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-500 text-white mb-6">
+                            <!-- Icon: Chip -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m-2 6h2M7 7h10v10H7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Electronic Engineering</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> PLC & Micro-controller Controller Design</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Data Logger Design</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> GPRS, GSM, WIFI Based Remote Sensing</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Custom PLC & Micro-controller Products</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> Electronic Component Supply</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">&#10003;</span> PCB Layout Design & Supply</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Product Section -->
+        <section id="products" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Product Image Placeholder -->
+                <div>
+                    <img src="./img2.png" alt="KSN Power Monitor Product" class="rounded-lg shadow-xl object-cover w-full">
+                </div>
+                
+                <!-- Product Details -->
+                <div class="mt-8 md:mt-0">
+                    <span class="block text-lg font-semibold text-amber-500 uppercase">Product Spotlight</span>
+                    <h2 class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        Power Monitor
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        An ideal solution for protecting your precision equipment, medicine, and perishable food items in any air-conditioned environment. The Power Monitor helps you ease the burden of monitoring by providing real-time data on environmental conditions, keeping you informed of undesirable temperature changes or power failures.
+                    </p>
+                    
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-3">Key Features</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span> SMS alerts for AC power failure/recovery</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span> Temperature & Humidity monitoring</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span> Easy configuration via SMS</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span> IoT backend communication ready</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span> Built-in 3.7v backup battery</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span> Relay outputs for visual/audible alarms</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-3">Applications</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start"><span class="text-gray-900 mr-2 mt-1">&bull;</span> Server Rooms</li>
+                                <li class="flex items-start"><span class="text-gray-900 mr-2 mt-1">&bull;</span> Cool Rooms</li>
+                                <li class="flex items-start"><span class="text-gray-900 mr-2 mt-1">&bull;</span> Chillers & Freezers</li>
+                                <li class="flex items-start"><span class="text-gray-900 mr-2 mt-1">&bull;</span> Pharmaceutical Storage Facilities</li>
+                                <li class="flex items-start"><span class="text-gray-900 mr-2 mt-1">&bull;</span> Any temperature-regulated facility</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="bg-amber-500">
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                    Ready to start your next project?
+                </h2>
+                <p class="mt-4 text-lg text-amber-50">
+                    Let our team of experts provide the high-quality solution you need.
+                </p>
+                <a href="#contact" class="mt-8 inline-block bg-white text-amber-600 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors shadow-lg">
+                    Contact Us Today
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        Get In Touch
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We are here to help with all your engineering needs.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contact Form Placeholder (or additional info) -->
+                    
+
+                    <!-- Contact Details -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Address</h3>
+                            <p class="mt-2 text-lg text-gray-600">
+                                KSN Engineering (Private) Limited<br>
+                                No: 134A, Ellakkala, Veyangoda
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Phone</h3>
+                            <p class="mt-2 text-lg text-gray-600">
+                                <span class="font-semibold">Phone:</span> 033-4359886<br>
+                                <span class="font-semibold">Hotline:</span> 0773905028 (Nalaka)
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Email</h3>
+                            <p class="mt-2 text-lg text-gray-600">
+                                info@ksnengineering.com<br>
+                                nalaka@ksnegineering.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <a href="#home" class="flex flex-col items-center md:items-start leading-none">
+                    <span class="text-2xl font-bold text-white">KSN</span>
+                    <span class="text-xs font-semibold text-amber-400 tracking-wider uppercase">Engineering</span>
+                </a>
+            </div>
+            <div class="flex space-x-6 mb-6 md:mb-0">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#products" class="hover:text-white transition-colors">Products</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            <div>
+                <p>&copy; 2025 KSN Engineering (Pvt) Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close menu when a link is clicked
+            const navLinks = mobileMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
